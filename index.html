@@ -1,0 +1,3195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+
+    <title>Cracken.one — Gloomhaven Universe Upgrade Collection</title>
+
+    <style>
+        /* ============================================================
+   CRACKEN.ONE — CUSTOMER GUIDE
+============================================================ */
+
+        :root {
+            --orange: #FF5E2A;
+            --burgundy: #60000B;
+            --silver: #DADADA;
+            --black: #000000;
+
+            --white: #F7F7F5;
+            --surface: #0B0B0B;
+            --surface-2: #111111;
+            --surface-3: #171717;
+
+            --text: #E7E7E7;
+            --muted: #B0B0B0;
+            --muted-2: #858585;
+
+            --orange-soft: rgba(255, 94, 42, .10);
+            --orange-border: rgba(255, 94, 42, .32);
+
+            --border: rgba(218, 218, 218, .11);
+            --border-strong: rgba(218, 218, 218, .20);
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 34px;
+
+            --container: 1280px;
+        }
+
+
+        /* ============================================================
+   RESET
+============================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            background:
+                radial-gradient(circle at 90% -10%,
+                    rgba(96, 0, 11, .55),
+                    transparent 32%),
+                var(--black);
+
+            color: var(--text);
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            line-height: 1.6;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(calc(100% - 40px), var(--container));
+            margin-inline: auto;
+        }
+
+
+        /* ============================================================
+   DECORATION
+============================================================ */
+
+        .noise {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .018;
+
+            z-index: 1000;
+
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, .25) 3px);
+        }
+
+        .map-grid {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .15;
+
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .04) 1px,
+                    transparent 1px),
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .04) 1px,
+                    transparent 1px);
+
+            background-size: 48px 48px;
+
+            mask-image:
+                linear-gradient(to bottom,
+                    black,
+                    transparent 90%);
+        }
+
+
+        /* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 9px;
+
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .15em;
+
+            text-transform: uppercase;
+        }
+
+        .kicker::before {
+            content: "";
+
+            width: 18px;
+            height: 2px;
+
+            background: var(--orange);
+        }
+
+        .section {
+            padding: 88px 0;
+        }
+
+        .section-alt {
+            background: var(--surface);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-head {
+            margin-bottom: 38px;
+        }
+
+        .section-title {
+            max-width: 780px;
+
+            margin: 12px 0 15px;
+
+            color: var(--white);
+
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 850;
+
+            line-height: .98;
+
+            letter-spacing: -.05em;
+        }
+
+        .section-description {
+            max-width: 720px;
+
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        /* ============================================================
+   HEADER
+============================================================ */
+
+        .header {
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+
+            background: rgba(0, 0, 0, .9);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .brand-logo {
+            display: block;
+
+            width: auto;
+            height: 40px;
+            max-width: 180px;
+
+            object-fit: contain;
+        }
+
+        .brand-divider {
+            width: 1px;
+            height: 28px;
+
+            background: var(--border-strong);
+        }
+
+        .brand-context {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.4;
+
+            text-transform: uppercase;
+
+            letter-spacing: .06em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+
+            gap: 26px;
+        }
+
+        .nav a {
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+        .nav a:hover {
+            color: var(--orange);
+        }
+
+
+        /* ============================================================
+   HERO
+============================================================ */
+
+        .hero {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 760px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 100px 0 60px;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            right: -280px;
+            top: 80px;
+
+            border: 1px solid rgba(255, 94, 42, .12);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 80px rgba(255, 94, 42, .015),
+                0 0 0 160px rgba(255, 94, 42, .01);
+        }
+
+        .hero-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr .8fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+
+            margin: 21px 0 22px;
+
+            color: var(--white);
+
+            font-size: clamp(54px, 8vw, 96px);
+            font-weight: 900;
+
+            line-height: .86;
+
+            letter-spacing: -.07em;
+
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-copy {
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            margin-top: 32px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        /* ============================================================
+   BUTTONS
+============================================================ */
+
+        .btn {
+            min-height: 50px;
+
+            padding: 0 22px;
+
+            border: 0;
+            border-radius: 999px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 900;
+
+            transition: .2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--orange);
+
+            color: var(--black);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-strong);
+
+            background: transparent;
+
+            color: var(--silver);
+        }
+
+
+        /* ============================================================
+   ADVENTURE MAP
+============================================================ */
+
+        .adventure-map {
+            padding: 26px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+
+            background:
+                linear-gradient(145deg,
+                    rgba(96, 0, 11, .28),
+                    transparent 60%),
+                var(--surface);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, .45);
+        }
+
+        .map-top {
+            padding-bottom: 21px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .map-code {
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .13em;
+        }
+
+        .map-status {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+        }
+
+        .route {
+            padding-top: 26px;
+
+            display: grid;
+
+            gap: 8px;
+        }
+
+        .route-item {
+            min-height: 60px;
+
+            padding: 0 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+
+            background: rgba(255, 255, 255, .018);
+        }
+
+        .route-left {
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+        }
+
+        .route-number {
+            width: 27px;
+            height: 27px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--orange-border);
+            border-radius: 50%;
+
+            color: var(--orange);
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .route-item strong {
+            color: var(--silver);
+
+            font-size: 12px;
+        }
+
+        .route-item>span {
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+
+        /* ============================================================
+   STATS
+============================================================ */
+
+        .stats {
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: 65px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat {
+            padding: 24px 20px;
+
+            border-right: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .stat strong {
+            display: block;
+
+            color: var(--white);
+
+            font-size: 30px;
+            font-weight: 900;
+
+            letter-spacing: -.05em;
+        }
+
+        .stat span {
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ============================================================
+   GAME SELECTOR
+============================================================ */
+
+        .game-selector {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+        .game-button {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 150px;
+
+            padding: 22px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            background: var(--surface-2);
+
+            color: var(--silver);
+
+            text-align: left;
+
+            transition: .2s ease;
+        }
+
+        .game-button:hover,
+        .game-button.active {
+            transform: translateY(-2px);
+
+            border-color: var(--orange-border);
+        }
+
+        .game-button.active {
+            background:
+                linear-gradient(145deg,
+                    rgba(96, 0, 11, .5),
+                    var(--surface-2));
+        }
+
+        .game-code {
+            display: block;
+
+            color: var(--orange);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: .14em;
+        }
+
+        .game-name {
+            display: block;
+
+            margin-top: 34px;
+
+            color: var(--white);
+
+            font-size: 20px;
+            font-weight: 850;
+        }
+
+
+        /* ============================================================
+   ESSENTIAL
+============================================================ */
+
+        .essential {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: clamp(30px, 5vw, 54px);
+
+            border: 1px solid var(--orange-border);
+            border-radius: var(--radius-xl);
+
+            background:
+                radial-gradient(circle at 100% 0,
+                    rgba(255, 94, 42, .10),
+                    transparent 35%),
+                linear-gradient(140deg,
+                    rgba(96, 0, 11, .45),
+                    transparent 55%),
+                var(--surface);
+        }
+
+        .essential::after {
+            content: "01";
+
+            position: absolute;
+
+            right: -20px;
+            bottom: -90px;
+
+            color: rgba(255, 255, 255, .025);
+
+            font-size: 260px;
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .essential-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                1.25fr .75fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .essential h2 {
+            margin: 10px 0 12px;
+
+            color: var(--white);
+
+            font-size: clamp(42px, 6vw, 68px);
+            font-weight: 900;
+
+            line-height: .92;
+
+            letter-spacing: -.055em;
+
+            text-transform: uppercase;
+        }
+
+        .essential-copy {
+            max-width: 610px;
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .essential-list {
+            margin-top: 27px;
+
+            display: grid;
+
+            gap: 8px;
+        }
+
+        .essential-item {
+            padding: 14px 16px;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+
+            background: rgba(0, 0, 0, .22);
+
+            font-size: 12px;
+        }
+
+        .essential-item span {
+            color: var(--orange);
+
+            font-weight: 900;
+        }
+
+        .price-panel {
+            padding: 28px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            background: rgba(0, 0, 0, .35);
+        }
+
+        .price-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .old-price {
+            margin-top: 20px;
+
+            color: var(--muted-2);
+
+            text-decoration: line-through;
+
+            font-size: 14px;
+        }
+
+        .price-main {
+            margin-top: 2px;
+
+            color: var(--white);
+
+            font-size: clamp(30px, 4vw, 41px);
+            font-weight: 900;
+
+            letter-spacing: -.045em;
+        }
+
+        .price-main small {
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+
+        /* ============================================================
+   COLLECTION CONTROLS
+============================================================ */
+
+        .collection-controls {
+            margin-bottom: 26px;
+
+            padding: 20px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            background: var(--surface-2);
+        }
+
+        .control-row {
+            display: grid;
+
+            grid-template-columns:
+                110px 1fr;
+
+            gap: 18px;
+
+            align-items: center;
+        }
+
+        .control-row+.control-row {
+            margin-top: 14px;
+
+            padding-top: 14px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .control-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .filters {
+            display: flex;
+
+            gap: 8px;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter {
+            flex: 0 0 auto;
+
+            padding: 10px 15px;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            font-weight: 850;
+
+            transition: .2s;
+        }
+
+        .filter:hover {
+            border-color: var(--border-strong);
+
+            color: var(--white);
+        }
+
+        .filter.active {
+            border-color: var(--orange);
+
+            background: var(--orange);
+
+            color: var(--black);
+        }
+
+
+        /* ============================================================
+   COMPATIBILITY GUIDE
+============================================================ */
+
+        .compat-guide {
+            margin-bottom: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            background: var(--surface-2);
+
+            overflow: hidden;
+        }
+
+        .compat-guide summary {
+            padding: 18px 20px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            list-style: none;
+
+            cursor: pointer;
+
+            color: var(--silver);
+
+            font-size: 12px;
+            font-weight: 850;
+        }
+
+        .compat-guide summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .compat-guide summary::after {
+            content: "+";
+
+            margin-left: auto;
+
+            color: var(--orange);
+
+            font-size: 20px;
+        }
+
+        .compat-guide[open] summary::after {
+            content: "−";
+        }
+
+        .compat-preview {
+            color: var(--orange);
+
+            letter-spacing: .08em;
+        }
+
+        .compat-legend {
+            padding: 0 20px 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+        .legend-item {
+            padding: 16px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+
+            background: rgba(0, 0, 0, .24);
+        }
+
+        .legend-dots {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--orange);
+
+            font-size: 14px;
+
+            letter-spacing: .08em;
+        }
+
+        .legend-item strong {
+            display: block;
+
+            color: var(--white);
+
+            font-size: 11px;
+        }
+
+        .legend-item p {
+            margin: 6px 0 0;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.55;
+        }
+
+
+        /* ============================================================
+   PACK GRID
+============================================================ */
+
+        .pack-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .pack {
+            min-height: 330px;
+
+            padding: 25px 24px 23px;
+
+            display: flex;
+            flex-direction: column;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, .012),
+                    transparent),
+                var(--surface-2);
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .pack:hover {
+            transform: translateY(-3px);
+
+            border-color: var(--orange-border);
+
+            background: var(--surface-3);
+        }
+
+        .pack.hidden {
+            display: none;
+        }
+
+        .pack.optional {
+            opacity: .72;
+        }
+
+
+        /* ============================================================
+   PACK HEADER
+============================================================ */
+
+        .pack-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sku {
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .10em;
+        }
+
+        .count {
+            padding: 6px 10px;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            color: #BDBDBD;
+
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        /* ============================================================
+   PACK TITLE
+============================================================ */
+
+        .pack h3 {
+            margin: 21px 0 7px;
+
+            color: #F7F7F5;
+
+            font-size: 24px;
+            font-weight: 850;
+
+            line-height: 1.12;
+
+            letter-spacing: -.025em;
+        }
+
+        .pack-category {
+            color: #A6A6A6;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            line-height: 1.4;
+
+            letter-spacing: .045em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ============================================================
+   COMPATIBILITY BADGES
+============================================================ */
+
+        .compatibility {
+            margin: 21px 0 20px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .compat {
+            padding: 7px 9px;
+
+            border-radius: 5px;
+
+            background: var(--orange-soft);
+
+            color: var(--orange);
+
+            font-size: 9px;
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: .015em;
+        }
+
+        .compat.mid {
+            background: rgba(218, 218, 218, .08);
+
+            color: #B8B8B8;
+        }
+
+        .compat.low {
+            background: rgba(218, 218, 218, .055);
+
+            color: #969696;
+        }
+
+        .compat.none {
+            background: rgba(255, 255, 255, .025);
+
+            color: #777777;
+        }
+
+
+        /* ============================================================
+   PACK INCLUDES
+============================================================ */
+
+        .includes {
+            margin: 1px 0 25px;
+        }
+
+        .includes-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #858585;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            line-height: 1.3;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .includes p {
+            margin: 0;
+
+            color: #C4C4C4;
+
+            font-size: 12px;
+            font-weight: 450;
+
+            line-height: 1.75;
+
+            letter-spacing: .005em;
+        }
+
+
+        /* ============================================================
+   PACK PRICE
+============================================================ */
+
+        .pack-price {
+            margin-top: auto;
+
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border);
+
+            color: #FFFFFF;
+
+            font-size: 23px;
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -.025em;
+        }
+
+        .pack-price small {
+            margin-left: 4px;
+
+            color: #A5A5A5;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .02em;
+        }
+
+
+        /* ============================================================
+   EMPTY STATE
+============================================================ */
+
+        .empty-state {
+            display: none;
+
+            padding: 50px 20px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+
+            text-align: center;
+
+            color: var(--muted);
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+
+        /* ============================================================
+   CHOOSE YOUR PATH
+============================================================ */
+
+        .path-grid {
+            display: grid;
+
+            grid-template-columns:
+                .75fr 1.25fr;
+
+            gap: 18px;
+        }
+
+        .path-options {
+            display: grid;
+
+            gap: 8px;
+        }
+
+        .path-button {
+            position: relative;
+
+            padding: 17px 18px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+
+            background: transparent;
+
+            color: var(--muted);
+
+            text-align: left;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+        .path-button:hover,
+        .path-button.active {
+            color: var(--white);
+
+            background: var(--surface-2);
+        }
+
+        .path-button.active {
+            border-color: var(--orange-border);
+        }
+
+        .path-button.active::before {
+            content: "";
+
+            position: absolute;
+
+            left: -1px;
+            top: 12px;
+            bottom: 12px;
+
+            width: 3px;
+
+            background: var(--orange);
+
+            border-radius: 0 4px 4px 0;
+        }
+
+        .recommendation {
+            min-height: 290px;
+
+            padding: clamp(26px, 5vw, 46px);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+
+            background:
+                radial-gradient(circle at 90% 0,
+                    rgba(255, 94, 42, .10),
+                    transparent 35%),
+                linear-gradient(145deg,
+                    rgba(96, 0, 11, .3),
+                    transparent),
+                var(--surface-2);
+        }
+
+        .recommendation-label {
+            color: var(--orange);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: .15em;
+        }
+
+        .recommendation h3 {
+            margin: 10px 0;
+
+            color: var(--white);
+
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 900;
+
+            line-height: .95;
+
+            letter-spacing: -.05em;
+        }
+
+        .recommendation p {
+            max-width: 580px;
+
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ============================================================
+   COMPLETE HOARD
+============================================================ */
+
+        .complete {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: clamp(36px, 7vw, 72px);
+
+            border-radius: var(--radius-xl);
+
+            background:
+                radial-gradient(circle at 85% 15%,
+                    rgba(255, 255, 255, .09),
+                    transparent 25%),
+                linear-gradient(125deg,
+                    var(--orange),
+                    #E54120);
+
+            color: var(--black);
+        }
+
+        .complete::after {
+            content: "13";
+
+            position: absolute;
+
+            right: -25px;
+            bottom: -105px;
+
+            color: rgba(0, 0, 0, .08);
+
+            font-size: 310px;
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .discount {
+            position: relative;
+
+            z-index: 2;
+
+            display: inline-flex;
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            background: var(--black);
+
+            color: var(--orange);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: .1em;
+        }
+
+        .complete h2 {
+            position: relative;
+
+            z-index: 2;
+
+            margin: 20px 0 10px;
+
+            font-size: clamp(48px, 8vw, 86px);
+            font-weight: 950;
+
+            line-height: .84;
+
+            letter-spacing: -.07em;
+
+            text-transform: uppercase;
+        }
+
+        .complete-copy {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 650px;
+
+            color: rgba(0, 0, 0, .68);
+
+            font-size: 15px;
+            font-weight: 650;
+
+            line-height: 1.7;
+        }
+
+        .complete-pricing {
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: 38px;
+
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+
+            gap: 26px;
+        }
+
+        .complete-old {
+            color: rgba(0, 0, 0, .5);
+
+            font-size: 14px;
+
+            text-decoration: line-through;
+        }
+
+        .complete-price {
+            font-size: clamp(40px, 6vw, 62px);
+            font-weight: 950;
+
+            line-height: 1;
+
+            letter-spacing: -.055em;
+        }
+
+        .complete-price small {
+            font-size: 10px;
+        }
+
+        .saving {
+            margin-bottom: 8px;
+
+            padding: 8px 11px;
+
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 999px;
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+
+        /* ============================================================
+   FOOTER
+============================================================ */
+
+        .footer {
+            padding: 50px 0;
+
+            border-top: 1px solid var(--border);
+
+            color: #858585;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+        .footer-logo {
+            width: auto;
+            height: 30px;
+
+            opacity: .75;
+        }
+
+
+        /* ============================================================
+   TABLET
+============================================================ */
+
+        @media (max-width: 1000px) {
+
+            .hero-grid,
+            .essential-grid,
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pack-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .compat-legend {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* ============================================================
+   MOBILE
+============================================================ */
+
+        @media (max-width: 650px) {
+
+            .container {
+                width: min(calc(100% - 24px), var(--container));
+            }
+
+            .header-inner {
+                min-height: 66px;
+            }
+
+            .brand-divider,
+            .brand-context,
+            .nav {
+                display: none;
+            }
+
+            .brand-logo {
+                height: 34px;
+            }
+
+            .hero {
+                min-height: auto;
+
+                padding: 62px 0 42px;
+            }
+
+            .hero h1 {
+                font-size: 53px;
+            }
+
+            .hero-grid {
+                gap: 42px;
+            }
+
+            .hero-actions {
+                display: grid;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .game-selector,
+            .pack-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .control-row {
+                grid-template-columns: 1fr;
+
+                gap: 9px;
+            }
+
+            .compat-legend {
+                grid-template-columns: 1fr;
+            }
+
+            .pack {
+                min-height: 315px;
+
+                padding: 23px 22px;
+            }
+
+            .pack h3 {
+                font-size: 24px;
+            }
+
+            .pack-category {
+                font-size: 10px;
+            }
+
+            .compat {
+                padding: 7px 9px;
+
+                font-size: 9px;
+            }
+
+            .includes p {
+                font-size: 13px;
+
+                line-height: 1.7;
+            }
+
+            .pack-price {
+                font-size: 25px;
+            }
+
+            .footer-inner {
+                display: grid;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="noise"></div>
+
+
+    <!-- ============================================================
+     HEADER
+============================================================ -->
+
+    <header class="header">
+
+        <div class="container header-inner">
+
+            <div class="brand">
+
+                <img src="assets/cracken-logo.png" alt="Cracken.one" class="brand-logo">
+
+                <div class="brand-divider"></div>
+
+                <div class="brand-context">
+                    Tabletop Gaming<br>
+                    Upgrade Collection
+                </div>
+
+            </div>
+
+            <nav class="nav">
+
+                <a href="#start">
+                    Choose Your Game
+                </a>
+
+                <a href="#collection">
+                    The Collection
+                </a>
+
+                <a href="#complete">
+                    Complete Hoard
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- ============================================================
+     HERO
+============================================================ -->
+
+        <section class="hero">
+
+            <div class="map-grid"></div>
+
+            <div class="container">
+
+                <div class="hero-grid">
+
+                    <div>
+
+                        <span class="kicker">
+                            Cracken.one × Gloomhaven Universe
+                        </span>
+
+                        <h1>
+                            Enter the<br>
+                            <span>Dungeon.</span>
+                        </h1>
+
+                        <p class="hero-copy">
+                            Leave the cardboard behind.
+                            Bring your Gloomhaven universe to life with a modular
+                            collection of 3D terrain, traps, treasures,
+                            architecture and scenario props — crafted for the table.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a href="#start" class="btn btn-primary">
+                                Choose Your Path
+                            </a>
+
+                            <a href="#collection" class="btn btn-outline">
+                                Explore All 13 Packs
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="adventure-map">
+
+                        <div class="map-top">
+
+                            <span class="map-code">
+                                CRACKEN / GU COLLECTION
+                            </span>
+
+                            <span class="map-status">
+                                Adventure Map
+                            </span>
+
+                        </div>
+
+                        <div class="route">
+
+                            <div class="route-item">
+
+                                <div class="route-left">
+                                    <div class="route-number">I</div>
+                                    <strong>THE ESSENTIALS</strong>
+                                </div>
+
+                                <span>GU-01 — GU-03</span>
+
+                            </div>
+
+                            <div class="route-item">
+
+                                <div class="route-left">
+                                    <div class="route-number">II</div>
+                                    <strong>THE DUNGEON</strong>
+                                </div>
+
+                                <span>GU-04 / 05 / 08</span>
+
+                            </div>
+
+                            <div class="route-item">
+
+                                <div class="route-left">
+                                    <div class="route-number">III</div>
+                                    <strong>THE WILDERNESS</strong>
+                                </div>
+
+                                <span>GU-06 / 07 / 09</span>
+
+                            </div>
+
+                            <div class="route-item">
+
+                                <div class="route-left">
+                                    <div class="route-number">IV</div>
+                                    <strong>THE FROZEN NORTH</strong>
+                                </div>
+
+                                <span>GU-10 — GU-13</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <strong>13</strong>
+                        <span>Upgrade Packs</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>3</strong>
+                        <span>Game Systems</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>300+</strong>
+                        <span>Upgrade Pieces</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>25%</strong>
+                        <span>Complete Hoard Saving</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+     CAMPAIGN SELECTOR
+============================================================ -->
+
+        <section class="section section-alt" id="start">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <span class="kicker">
+                        Choose Your Campaign
+                    </span>
+
+                    <h2 class="section-title">
+                        Where does your adventure begin?
+                    </h2>
+
+                    <p class="section-description">
+                        Choose the game you're playing and we'll show you
+                        which upgrades matter most for your campaign.
+                    </p>
+
+                </div>
+
+
+                <div class="game-selector">
+
+                    <button class="game-button" data-game-button="gh" onclick="selectCampaign('gh')">
+
+                        <span class="game-code">
+                            CAMPAIGN / 01
+                        </span>
+
+                        <span class="game-name">
+                            Gloomhaven
+                        </span>
+
+                    </button>
+
+
+                    <button class="game-button" data-game-button="jotl" onclick="selectCampaign('jotl')">
+
+                        <span class="game-code">
+                            CAMPAIGN / 02
+                        </span>
+
+                        <span class="game-name">
+                            Jaws of the Lion
+                        </span>
+
+                    </button>
+
+
+                    <button class="game-button" data-game-button="fh" onclick="selectCampaign('fh')">
+
+                        <span class="game-code">
+                            CAMPAIGN / 03
+                        </span>
+
+                        <span class="game-name">
+                            Frosthaven
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+     ESSENTIAL
+============================================================ -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="essential">
+
+                    <div class="essential-grid">
+
+                        <div>
+
+                            <span class="kicker">
+                                Your First Loadout
+                            </span>
+
+                            <h2>
+                                GU-ESSENTIAL
+                            </h2>
+
+                            <p class="essential-copy">
+                                Not sure where to begin? Start with three
+                                high-impact packs designed to immediately make
+                                the board feel more physical and immersive.
+                            </p>
+
+                            <div class="essential-list">
+
+                                <div class="essential-item">
+                                    <span>GU-01</span>
+                                    <strong>Doors & Entrances</strong>
+                                </div>
+
+                                <div class="essential-item">
+                                    <span>GU-02</span>
+                                    <strong>Traps & Mechanisms</strong>
+                                </div>
+
+                                <div class="essential-item">
+                                    <span>GU-03</span>
+                                    <strong>Treasure & Loot</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-panel">
+
+                            <div class="price-label">
+                                Essential Bundle
+                            </div>
+
+                            <div class="old-price">
+                                6,500,000 TOMAN
+                            </div>
+
+                            <div class="price-main">
+                                5,990,000
+                                <small>TOMAN</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+     COLLECTION
+============================================================ -->
+
+        <section class="section section-alt" id="collection">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <span class="kicker">
+                        The Arsenal
+                    </span>
+
+                    <h2 class="section-title">
+                        Build your own adventure.
+                    </h2>
+
+                    <p class="section-description">
+                        Pick your game, explore the terrain categories and
+                        build the upgrade collection that fits your campaign.
+                    </p>
+
+                </div>
+
+
+                <!-- FILTERS -->
+
+                <div class="collection-controls">
+
+                    <div class="control-row">
+
+                        <span class="control-label">
+                            Game
+                        </span>
+
+                        <div class="filters">
+
+                            <button class="filter active" data-game-filter="all" onclick="setGameFilter('all')">
+                                All Games
+                            </button>
+
+                            <button class="filter" data-game-filter="gh" onclick="setGameFilter('gh')">
+                                Gloomhaven
+                            </button>
+
+                            <button class="filter" data-game-filter="jotl" onclick="setGameFilter('jotl')">
+                                Jaws of the Lion
+                            </button>
+
+                            <button class="filter" data-game-filter="fh" onclick="setGameFilter('fh')">
+                                Frosthaven
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="control-row">
+
+                        <span class="control-label">
+                            Category
+                        </span>
+
+                        <div class="filters">
+
+                            <button class="filter active" data-category-filter="all" onclick="setCategoryFilter('all')">
+                                All Packs
+                            </button>
+
+                            <button class="filter" data-category-filter="gameplay"
+                                onclick="setCategoryFilter('gameplay')">
+                                Gameplay
+                            </button>
+
+                            <button class="filter" data-category-filter="dungeon"
+                                onclick="setCategoryFilter('dungeon')">
+                                Dungeon
+                            </button>
+
+                            <button class="filter" data-category-filter="environment"
+                                onclick="setCategoryFilter('environment')">
+                                Wilderness
+                            </button>
+
+                            <button class="filter" data-category-filter="frosthaven"
+                                onclick="setCategoryFilter('frosthaven')">
+                                Frozen North
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPATIBILITY GUIDE -->
+
+                <details class="compat-guide">
+
+                    <summary>
+
+                        <span class="compat-preview">
+                            ●●●
+                        </span>
+
+                        How does game compatibility work?
+
+                    </summary>
+
+
+                    <div class="compat-legend">
+
+                        <div class="legend-item">
+
+                            <span class="legend-dots">
+                                ●●●
+                            </span>
+
+                            <strong>
+                                Primary Compatibility
+                            </strong>
+
+                            <p>
+                                A major upgrade for this game
+                                and strongly recommended.
+                            </p>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dots">
+                                ●●○
+                            </span>
+
+                            <strong>
+                                Significant Compatibility
+                            </strong>
+
+                            <p>
+                                Useful across a meaningful
+                                number of scenarios.
+                            </p>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dots">
+                                ●○○
+                            </span>
+
+                            <strong>
+                                Limited Compatibility
+                            </strong>
+
+                            <p>
+                                Useful for selected scenarios
+                                or optional table upgrades.
+                            </p>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dots">
+                                ○○○
+                            </span>
+
+                            <strong>
+                                Not Required
+                            </strong>
+
+                            <p>
+                                Not part of the standard
+                                upgrade path for this game.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- ============================================================
+     PACK GRID
+============================================================ -->
+
+                <div class="pack-grid" id="packGrid">
+
+
+                    <!-- GU-01 -->
+
+                    <article class="pack" data-category="gameplay dungeon" data-gh="3" data-jotl="3" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-01</span>
+                            <span class="count">28 PCS</span>
+                        </div>
+
+                        <h3>Doors & Entrances</h3>
+
+                        <span class="pack-category">
+                            Dungeon / Gameplay
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat">JOTL ●●●</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Stone & Wood Doors · Fog Doors · Snow Doors · Metal Doors
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            2,600,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-02 -->
+
+                    <article class="pack" data-category="gameplay" data-gh="3" data-jotl="3" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-02</span>
+                            <span class="count">32 PCS</span>
+                        </div>
+
+                        <h3>Traps & Mechanisms</h3>
+
+                        <span class="pack-category">
+                            Gameplay / Interactive
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat">JOTL ●●●</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Pressure Plates · Spike Pits · Bear Traps · Poison Gas
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            1,950,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-03 -->
+
+                    <article class="pack" data-category="gameplay" data-gh="3" data-jotl="3" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-03</span>
+                            <span class="count">26 PCS</span>
+                        </div>
+
+                        <h3>Treasure & Loot</h3>
+
+                        <span class="pack-category">
+                            Gameplay / Interactive
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat">JOTL ●●●</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Treasure · Loot Satchels
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            1,950,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-04 -->
+
+                    <article class="pack" data-category="dungeon" data-gh="3" data-jotl="3" data-fh="2">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-04</span>
+                            <span class="count">28 PCS</span>
+                        </div>
+
+                        <h3>Dungeon Furniture</h3>
+
+                        <span class="pack-category">
+                            Dungeon / Architecture
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat">JOTL ●●●</span>
+                            <span class="compat mid">FH ●●○</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Barrels · Shelves · Cabinets · Crates · Tables · Bookcases
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            6,300,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-05 -->
+
+                    <article class="pack" data-category="dungeon" data-gh="3" data-jotl="2" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-05</span>
+                            <span class="count">23 PCS</span>
+                        </div>
+
+                        <h3>Dungeon Decoration</h3>
+
+                        <span class="pack-category">
+                            Dungeon / Detail
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat mid">JOTL ●●○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Fountains · Pillars · Statues · Altars · Sarcophagi · Crystals
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            5,100,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-06 -->
+
+                    <article class="pack" data-category="environment" data-gh="3" data-jotl="2" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-06</span>
+                            <span class="count">41 PCS</span>
+                        </div>
+
+                        <h3>Rocks & Cave</h3>
+
+                        <span class="pack-category">
+                            Wilderness / Terrain
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat mid">JOTL ●●○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Boulders · Rubble · Stalagmites · Rock Columns · Cave Walls · Dark Pits
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            8,250,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-07 -->
+
+                    <article class="pack" data-category="environment" data-gh="3" data-jotl="1" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-07</span>
+                            <span class="count">29 PCS</span>
+                        </div>
+
+                        <h3>Forest & Nature</h3>
+
+                        <span class="pack-category">
+                            Wilderness / Terrain
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat low">JOTL ●○○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Thorns · Trees · Bushes · Logs · Stumps · Nests
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            6,700,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-08 -->
+
+                    <article class="pack" data-category="dungeon" data-gh="3" data-jotl="2" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-08</span>
+                            <span class="count">20 PCS</span>
+                        </div>
+
+                        <h3>Architecture</h3>
+
+                        <span class="pack-category">
+                            Dungeon / Architecture
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat mid">JOTL ●●○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Stairs · Wall Sections · Wooden Stairs · Barricades
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            2,950,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-09 -->
+
+                    <article class="pack" data-category="environment" data-gh="3" data-jotl="2" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-09</span>
+                            <span class="count">24 PCS</span>
+                        </div>
+
+                        <h3>Water & Hazardous</h3>
+
+                        <span class="pack-category">
+                            Wilderness / Terrain
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat">GH ●●●</span>
+                            <span class="compat mid">JOTL ●●○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Water Terrain · Hazardous Coals
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            2,100,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-10 -->
+
+                    <article class="pack" data-category="environment frosthaven" data-gh="1" data-jotl="0" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-10</span>
+                            <span class="count">38 PCS</span>
+                        </div>
+
+                        <h3>Ice & Crystal</h3>
+
+                        <span class="pack-category">
+                            Frozen North / Environment
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat low">GH ●○○</span>
+                            <span class="compat none">JOTL ○○○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Ice Crystals · Ice Pillars · Ice Spikes · Ice Terrain · Ice Blocks
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            6,750,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-11 -->
+
+                    <article class="pack" data-category="environment frosthaven" data-gh="0" data-jotl="0" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-11</span>
+                            <span class="count">28 PCS</span>
+                        </div>
+
+                        <h3>Snow & Frozen Terrain</h3>
+
+                        <span class="pack-category">
+                            Frozen North / Environment
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat none">GH ○○○</span>
+                            <span class="compat none">JOTL ○○○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Frozen Debris · Snow Logs · Snow Rocks · Snow Drifts
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            4,550,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-12 -->
+
+                    <article class="pack" data-category="frosthaven" data-gh="0" data-jotl="0" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-12</span>
+                            <span class="count">14 PCS</span>
+                        </div>
+
+                        <h3>Ancient Technology</h3>
+
+                        <span class="pack-category">
+                            Frozen North / Special
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat none">GH ○○○</span>
+                            <span class="compat none">JOTL ○○○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Control Panels · Metal Cabinets · Power Conduits
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            1,100,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+
+                    <!-- GU-13 -->
+
+                    <article class="pack" data-category="frosthaven" data-gh="1" data-jotl="0" data-fh="3">
+
+                        <div class="pack-head">
+                            <span class="sku">GU-13</span>
+                            <span class="count">8 PCS</span>
+                        </div>
+
+                        <h3>Special Scenario Props</h3>
+
+                        <span class="pack-category">
+                            Frozen North / Special
+                        </span>
+
+                        <div class="compatibility">
+                            <span class="compat low">GH ●○○</span>
+                            <span class="compat none">JOTL ○○○</span>
+                            <span class="compat">FH ●●●</span>
+                        </div>
+
+                        <div class="includes">
+                            <span class="includes-label">Includes</span>
+                            <p>
+                                Special Altars · Glowing Orb · Scenario Mast
+                            </p>
+                        </div>
+
+                        <div class="pack-price">
+                            4,500,000 <small>TOMAN</small>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="empty-state" id="emptyState">
+                    No standard packs match this combination.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+     CHOOSE YOUR PATH
+============================================================ -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <span class="kicker">
+                        Choose Your Path
+                    </span>
+
+                    <h2 class="section-title">
+                        What kind of adventurer are you?
+                    </h2>
+
+                    <p class="section-description">
+                        You don't need to study the entire collection.
+                        Choose what you want to improve and we'll point
+                        you toward the right upgrade path.
+                    </p>
+
+                </div>
+
+
+                <div class="path-grid">
+
+                    <div class="path-options">
+
+                        <button class="path-button active" onclick="showGuide('start',this)">
+                            I'm new to the dungeon
+                        </button>
+
+                        <button class="path-button" onclick="showGuide('dungeon',this)">
+                            Upgrade my dungeon
+                        </button>
+
+                        <button class="path-button" onclick="showGuide('environment',this)">
+                            Bring the wilderness to life
+                        </button>
+
+                        <button class="path-button" onclick="showGuide('frosthaven',this)">
+                            I'm heading to Frosthaven
+                        </button>
+
+                        <button class="path-button" onclick="showGuide('complete',this)">
+                            Give me the whole damn thing
+                        </button>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <span class="recommendation-label">
+                            THE CAPTAIN RECOMMENDS
+                        </span>
+
+                        <h3 id="guideTitle">
+                            GU-ESSENTIAL
+                        </h3>
+
+                        <p id="guideText">
+                            Begin with GU-01, GU-02 and GU-03.
+                            Doors, traps and treasure create the biggest
+                            upgrade to the table without requiring a
+                            full terrain collection.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+     COMPLETE HOARD
+============================================================ -->
+
+        <section class="section" id="complete">
+
+            <div class="container">
+
+                <div class="complete">
+
+                    <span class="discount">
+                        ALL 13 PACKS · 25% OFF
+                    </span>
+
+                    <h2>
+                        The Complete<br>
+                        Hoard.
+                    </h2>
+
+                    <p class="complete-copy">
+                        The full Cracken.one Gloomhaven Universe upgrade collection.
+                        Gameplay objects, dungeon architecture, wilderness terrain,
+                        frozen environments and special scenario props —
+                        all 13 packs in one complete collection.
+                    </p>
+
+                    <div class="complete-pricing">
+
+                        <div>
+
+                            <div class="complete-old">
+                                54,800,000 TOMAN
+                            </div>
+
+                            <div class="complete-price">
+                                41,100,000
+                                <small>TOMAN</small>
+                            </div>
+
+                        </div>
+
+                        <div class="saving">
+                            SAVE 13,700,000 TOMAN
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ============================================================
+     FOOTER
+============================================================ -->
+
+    <footer class="footer">
+
+        <div class="container footer-inner">
+
+            <div>
+
+                <img src="assets/cracken-logo.png" alt="Cracken.one" class="footer-logo">
+
+            </div>
+
+            <div>
+                Cracken.one tabletop gaming upgrades.<br>
+                Unofficial third-party terrain upgrade collection.
+                Gloomhaven, Jaws of the Lion and Frosthaven names
+                and trademarks belong to their respective owners.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* ============================================================
+           FILTER STATE
+        ============================================================ */
+
+        let activeGame = "all";
+        let activeCategory = "all";
+
+
+        /* ============================================================
+           CAMPAIGN SELECTOR
+        ============================================================ */
+
+        function selectCampaign(game) {
+
+            setGameFilter(game);
+
+            document
+                .querySelectorAll("[data-game-button]")
+                .forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.gameButton === game
+                    );
+
+                });
+
+            document
+                .getElementById("collection")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        /* ============================================================
+           GAME FILTER
+        ============================================================ */
+
+        function setGameFilter(game) {
+
+            activeGame = game;
+
+            document
+                .querySelectorAll("[data-game-filter]")
+                .forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.gameFilter === game
+                    );
+
+                });
+
+            document
+                .querySelectorAll("[data-game-button]")
+                .forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        game !== "all" &&
+                        button.dataset.gameButton === game
+                    );
+
+                });
+
+            applyFilters();
+
+        }
+
+
+        /* ============================================================
+           CATEGORY FILTER
+        ============================================================ */
+
+        function setCategoryFilter(category) {
+
+            activeCategory = category;
+
+            document
+                .querySelectorAll("[data-category-filter]")
+                .forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.categoryFilter === category
+                    );
+
+                });
+
+            applyFilters();
+
+        }
+
+
+        /* ============================================================
+           APPLY FILTERS
+        
+           3 = Primary
+           2 = Significant
+           1 = Limited
+           0 = Not Required
+        ============================================================ */
+
+        function applyFilters() {
+
+            const grid =
+                document.getElementById("packGrid");
+
+            const packs = [
+                ...grid.querySelectorAll(".pack")
+            ];
+
+            let visibleCount = 0;
+
+
+            packs.forEach(pack => {
+
+                const categories =
+                    (pack.dataset.category || "")
+                        .split(" ");
+
+
+                const categoryMatch =
+                    activeCategory === "all" ||
+                    categories.includes(activeCategory);
+
+
+                let gameScore = 3;
+
+
+                if (activeGame !== "all") {
+
+                    gameScore =
+                        Number(
+                            pack.dataset[activeGame] || 0
+                        );
+
+                }
+
+
+                const gameMatch =
+                    activeGame === "all" ||
+                    gameScore > 0;
+
+
+                const visible =
+                    categoryMatch &&
+                    gameMatch;
+
+
+                pack.classList.toggle(
+                    "hidden",
+                    !visible
+                );
+
+
+                pack.classList.toggle(
+                    "optional",
+                    activeGame !== "all" &&
+                    gameScore === 1
+                );
+
+
+                if (visible) {
+                    visibleCount++;
+                }
+
+            });
+
+
+            /* Sort by game relevance */
+
+            if (activeGame !== "all") {
+
+                packs.sort((a, b) => {
+
+                    const scoreA =
+                        Number(
+                            a.dataset[activeGame] || 0
+                        );
+
+                    const scoreB =
+                        Number(
+                            b.dataset[activeGame] || 0
+                        );
+
+                    return scoreB - scoreA;
+
+                });
+
+
+                packs.forEach(pack =>
+                    grid.appendChild(pack)
+                );
+
+            }
+
+
+            document
+                .getElementById("emptyState")
+                .classList.toggle(
+                    "visible",
+                    visibleCount === 0
+                );
+
+        }
+
+
+        /* ============================================================
+           BUYING GUIDE
+        ============================================================ */
+
+        const guides = {
+
+            start: {
+
+                title:
+                    "GU-ESSENTIAL",
+
+                text:
+                    "Begin with GU-01, GU-02 and GU-03. " +
+                    "Doors, traps and treasure create the biggest " +
+                    "upgrade to the table without requiring a full " +
+                    "terrain collection."
+
+            },
+
+            dungeon: {
+
+                title:
+                    "THE DUNGEON",
+
+                text:
+                    "Combine GU-01, GU-04, GU-05 and GU-08. " +
+                    "This path focuses on doors, furniture, decoration " +
+                    "and architecture for a more physical dungeon experience."
+
+            },
+
+            environment: {
+
+                title:
+                    "THE WILDERNESS",
+
+                text:
+                    "Explore GU-06, GU-07 and GU-09 for rocks, caves, " +
+                    "forests and hazardous terrain. A strong choice when " +
+                    "you want scenarios to feel like real environments."
+
+            },
+
+            frosthaven: {
+
+                title:
+                    "THE FROZEN NORTH",
+
+                text:
+                    "Start with GU-10 and GU-11 for the strongest " +
+                    "Frosthaven-specific environmental upgrade, then " +
+                    "expand with GU-12 and GU-13 for special scenarios."
+
+            },
+
+            complete: {
+
+                title:
+                    "THE COMPLETE HOARD",
+
+                text:
+                    "Take the complete 13-pack collection and cover the " +
+                    "full Cracken.one Gloomhaven Universe upgrade system " +
+                    "with a 25% collection discount."
+
+            }
+
+        };
+
+
+        function showGuide(type, button) {
+
+            document
+                .querySelectorAll(".path-button")
+                .forEach(el =>
+                    el.classList.remove("active")
+                );
+
+
+            button.classList.add("active");
+
+
+            document
+                .getElementById("guideTitle")
+                .textContent =
+                guides[type].title;
+
+
+            document
+                .getElementById("guideText")
+                .textContent =
+                guides[type].text;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
