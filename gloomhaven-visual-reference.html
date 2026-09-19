@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <title>Cracken.one — GU Visual Reference Catalog</title>
+  <title>Cracken.one — GU Production Master</title>
   <style>
     :root{--orange:#FF5E2A;--wine:#60000B;--silver:#DADADA;--black:#000;--panel:#0c0c0e;--panel2:#141416;--muted:#999;--line:rgba(218,218,218,.13)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--silver);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
@@ -19,37 +19,27 @@
     footer{border-top:1px solid var(--line);padding:30px 0 50px;color:#777;font-size:11px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.print{border:1px solid var(--line);border-radius:9px;background:#111;color:#ddd;padding:9px 12px;cursor:pointer}
     @media(max-width:760px){.top small{display:none}.hero{padding-top:58px}.grid{grid-template-columns:1fr}.visual{min-height:180px}.controls{top:68px}.jump{display:none}}
     @media print{.top,.controls,.print{display:none}.hero{padding:25px 0}.hero h1{font-size:42px}.grid{display:block}.card{break-inside:avoid;margin:0 0 14px}.visual{min-height:120px}body{background:white;color:#222}.card{background:white;border-color:#bbb}.card h2,.hero h1,.brand{color:#111}.num{color:#ddd}}
+    .purchase{padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--panel)}
+    .purchase h2{font-size:32px;letter-spacing:-.04em;color:white;margin:10px 0}.purchase p{font-size:13px;color:#bbb}
+    .totals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.material-total{padding:18px;background:var(--panel2);border-radius:12px}.material-total strong{display:block;color:var(--orange);font-size:21px}.material-total small{display:block;color:#bbb}
+    .grid{grid-template-columns:1fr}.card:hover{transform:none}.card:hover .visual img{transform:none}.card-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+    .visual{margin:0;min-height:0;align-self:start}.visual img{height:auto;min-height:0;object-fit:contain}.cover-labels{padding:16px;display:flex;gap:7px;flex-wrap:wrap;background:#171719}.cover-labels a{font-size:12px;text-decoration:none;border:1px solid var(--line);padding:6px 9px;border-radius:7px}.cover-labels b{color:var(--orange)}
+    .table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}caption{text-align:left;color:#aaa;padding:12px 0}th,td{padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#eee}td small{display:block;color:#aaa}td:first-child{min-width:120px}tr:target{background:rgba(255,94,42,.16)}.estimated{color:#ffc28e}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+    @media(max-width:900px){.card-layout{grid-template-columns:1fr}.totals{grid-template-columns:1fr}.content{padding:16px}.purchase{padding:18px}.topin{flex-wrap:wrap}.bar{min-width:0}}
+    @media print{
+      @page{size:A4;margin:12mm}body:before{display:none}.wrap{width:100%}.hero{padding:0 0 12px}.hero h1{font-size:38px}.purchase{padding:12px;background:white;border-color:#bbb}.purchase h2,.purchase p,.purchase th,th{color:#111}.totals{grid-template-columns:repeat(3,1fr);gap:6px}.material-total,.cover-labels{background:#eee}.material-total strong,.material-total small,.cover-labels b,td small,.estimated,.sku,.subtitle,.note,caption{color:#333}.card,.card[hidden]{display:block!important;break-before:page;break-inside:auto;box-shadow:none;border-radius:0}.card-layout{display:block}.visual{min-height:0}.visual img{max-height:78mm;min-height:0;width:100%;object-fit:contain}.cover-labels{padding:8px}.cover-labels a{font-size:10px;color:#111}.content{padding:12px}.table-scroll{overflow:visible}table{font-size:10px}th,td{padding:6px;border-color:#bbb}thead{display:table-header-group}tr{break-inside:avoid}.note{font-size:10px}#search-status{display:none}.ai-tag{position:static;display:block;background:white;color:#333;border:0}.card h2{font-size:22px}.foot a{display:none}
+    }
   </style>
 </head>
 <body>
-  <header class="top"><div class="wrap topin"><div class="brand">CRACKEN<i>.ONE</i></div><small>Gloomhaven Universe / Visual Reference Archive</small></div></header>
+  <header class="top"><div class="wrap topin"><div class="brand">CRACKEN<i>.ONE</i></div><small>Gloomhaven Universe / Production Master</small></div></header>
   <main>
-    <section class="hero"><div class="wrap"><div class="eyebrow">Terrain upgrade collection · GU-01—GU-13</div><h1>Build the world beyond the tiles.</h1><p>A production-facing visual reference catalog for Gloomhaven and Frosthaven terrain upgrades. Each pack maps flat overlay concepts to a focused family of 3D components.</p><div class="stats"><span class="stat"><b>13</b> upgrade packs</span><span class="stat"><b>57</b> component types</span><span class="stat">Local-ready single file</span><span class="stat">Responsive reference board</span></div></div></section>
-    <div class="controls"><div class="wrap bar"><input class="search" id="search" aria-label="Search packs" placeholder="Search packs or components — e.g. crystal, door, snow…"><button class="jump" onclick="document.querySelector('.grid').scrollIntoView()">Browse all</button></div></div>
-    <section class="wrap grid" id="catalog"></section>
+    <section class="hero"><div class="wrap"><div class="eyebrow">Terrain upgrade collection · GU-01—GU-13</div><h1>Production<br>master.</h1><p>One complete collection. Thirteen packs. Existing concept covers paired with component schedules and a material purchase worksheet.</p><div class="stats"><span class="stat"><b>13</b> packs</span><span class="stat"><b>339</b> pieces · pack totals verified</span><span class="stat" id="margin-label"></span></div></div></section>
+    <section class="wrap purchase" aria-labelledby="purchase-title"><div class="eyebrow">01 / Material planning</div><h2 id="purchase-title">Material purchase estimate</h2><p id="bom-status" class="note"></p><p>Suggested colors use one material and one color per component. All current weights are provisional conservative estimates, not measured values. Confirm final sizes, infill, supports and resin drainage before buying. The safety margin is applied once to net weight.</p><div id="material-totals" class="totals"></div><div class="table-scroll"><table><caption>Full collection by material and color · independent of search</caption><thead><tr><th scope="col">Material / color</th><th scope="col">Pieces assigned</th><th scope="col">Net weight</th><th scope="col">Purchase with margin</th></tr></thead><tbody id="purchase-rows"></tbody></table></div></section><div class="controls"><div class="wrap bar"><input class="search" id="search" aria-label="Search packs" placeholder="Search packs or components — e.g. crystal, door, snow…"><button class="jump" onclick="clearSearch()">Clear search</button></div></div>
+    <p class="wrap" id="search-status" role="status"></p><section class="wrap grid" id="catalog"></section><noscript><p class="wrap note">Enable JavaScript to display the component schedules and calculate materials.</p></noscript>
   </main>
-  <footer><div class="wrap foot"><span>Unofficial production reference · Gloomhaven and Frosthaven are trademarks of their respective owners.</span><button class="print" onclick="print()">Print / Save PDF</button></div></footer>
-  <script>
-  const packs=[
-    ['GU-01','Doors & Entrances','Stone / Wood Doors|Fog Doors|Snow Doors|Metal Doors','door','Gloomhaven 3D printed doors terrain|Frosthaven snow door 3D terrain|Frosthaven metal door 3D printed terrain'],
-    ['GU-02','Traps & Mechanisms','Pressure Plates|Spike Pits|Bear Traps|Poison Gas','trap','Gloomhaven 3D pressure plate spike trap|Gloomhaven bear trap 3D terrain|Frosthaven poison gas trap terrain'],
-    ['GU-03','Treasure & Loot','Treasure Chests|Loot Satchels','loot','Gloomhaven treasure chest 3D printed terrain|Frosthaven loot token satchel 3D printed'],
-    ['GU-04','Dungeon Furniture','Barrels|Shelves|Cabinets|Crates|Tables|Bookcases','furniture','Gloomhaven 3D furniture barrels crates table bookshelf|Frosthaven supply shelf metal cabinet 3D terrain'],
-    ['GU-05','Dungeon Decoration','Fountains|Pillars|Statues|Altars|Sarcophagi|Crystals','decor','Gloomhaven altar statue pillar fountain 3D terrain|Gloomhaven sarcophagus 3D terrain|Gloomhaven crystal terrain 3D printed'],
-    ['GU-06','Rocks & Cave','Boulders|Rubble|Stalagmites|Rock Columns|Cave Walls|Dark Pits','cave','Gloomhaven boulder rubble stalagmite 3D terrain|Gloomhaven rock column cave wall 3D terrain|Gloomhaven dark pit 3D terrain'],
-    ['GU-07','Forest & Nature','Thorns|Trees|Bushes|Logs|Stumps|Nests','forest','Gloomhaven 3D trees bushes logs stumps terrain|Gloomhaven thorns nest 3D terrain'],
-    ['GU-08','Architecture','Stone Stairs|Wall Sections|Wooden Stairs|Barricades','build','Gloomhaven 3D stairs walls terrain|Gloomhaven wooden stairs 3D terrain|Frosthaven barricade 3D terrain'],
-    ['GU-09','Water & Hazardous','Water Terrain|Hazardous Coals','hazard','Gloomhaven 3D water tiles terrain|Gloomhaven hot coals hazardous terrain 3D'],
-    ['GU-10','Ice & Crystal','Ice Crystals|Ice Pillars|Ice Spikes|Ice Terrain|Ice Blocks','ice','Frosthaven ice crystal ice pillar 3D terrain|Frosthaven ice spikes 3D printed terrain|Frosthaven ice overlay tiles'],
-    ['GU-11','Snow & Frozen Terrain','Frozen Debris|Snow Logs|Snow Rocks|Snow Drifts','snow','Frosthaven snow terrain 3D printed|Frosthaven snow rock debris 3D terrain|Frosthaven snow drift log terrain'],
-    ['GU-12','Ancient Technology','Control Panels|Metal Cabinets|Power Conduits','tech','Frosthaven control panel 3D printed terrain|Frosthaven metal cabinet 3D terrain|Frosthaven power conduit 3D terrain'],
-    ['GU-13','Special Scenario Props','Special Altars|Glowing Orb|Scenario Mast','special','Frosthaven altar 3D printed terrain|Frosthaven glowing orb 3D terrain|Frosthaven mast 3D terrain']
-  ];
-  const icons={door:'⌁',trap:'⌄',loot:'◇',furniture:'▤',decor:'♜',cave:'▲',forest:'♠',build:'▥',hazard:'≈',ice:'✦',snow:'❄',tech:'⌘',special:'◉'};
-  const catalog=document.querySelector('#catalog');
-  catalog.innerHTML=packs.map((p,i)=>{const [sku,title,items]=p;const chips=items.split('|');const image=`assets/gu-concepts/${sku.toLowerCase()}-concept.webp`;return `<article class="card" data-search="${(p.join(' ')).toLowerCase()}"><div class="visual"><img src="${image}" alt="AI concept render of the ${title} upgrade pack" loading="lazy" decoding="async"><span class="ai-tag">AI Concept Render</span></div><div class="content"><div class="head"><div><div class="sku">${sku}</div><h2>${title}</h2><p class="subtitle">Concept preview · final product may vary</p></div><div class="num">${String(i+1).padStart(2,'0')}</div></div><div class="chips">${chips.map(x=>`<span class="chip">${x}</span>`).join('')}</div><div class="note">This visual is an AI-generated concept render created to preview the intended component family before physical production.</div></div></article>`}).join('');
-  document.querySelector('#search').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('.card').forEach(c=>c.hidden=!c.dataset.search.includes(q))});
-  </script>
+  <footer><div class="wrap foot"><span><a href="index.html">Customer guide</a> · Unofficial production reference · Gloomhaven and Frosthaven are trademarks of their respective owners.</span><button class="print" onclick="print()">Print / Save PDF</button></div></footer>
+  <script src="production-data.js"></script>
+  <script src="production-master.js"></script>
 </body>
 </html>
-
