@@ -1,11 +1,6 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#000000">
-  <title>Cracken.one — GU Production Master</title>
-  <style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Cracken.one — Upgrade Collection</title><style>
+
     :root{--orange:#FF5E2A;--wine:#60000B;--silver:#DADADA;--black:#000;--panel:#0c0c0e;--panel2:#141416;--muted:#999;--line:rgba(218,218,218,.13)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--silver);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 78% 0,rgba(96,0,11,.55),transparent 31%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:auto,46px 46px,46px 46px;mask-image:linear-gradient(#000,transparent 80%)}
@@ -29,17 +24,22 @@
     @media print{
       @page{size:A4;margin:12mm}body:before{display:none}.wrap{width:100%}.hero{padding:0 0 12px}.hero h1{font-size:38px}.purchase{padding:12px;background:white;border-color:#bbb}.purchase h2,.purchase p,.purchase th,th{color:#111}.totals{grid-template-columns:repeat(3,1fr);gap:6px}.material-total,.cover-labels{background:#eee}.material-total strong,.material-total small,.cover-labels b,td small,.estimated,.sku,.subtitle,.note,caption{color:#333}.card,.card[hidden]{display:block!important;break-before:page;break-inside:auto;box-shadow:none;border-radius:0}.card-layout{display:block}.visual{min-height:0}.visual img{max-height:78mm;min-height:0;width:100%;object-fit:contain}.cover-labels{padding:8px}.cover-labels a{font-size:10px;color:#111}.content{padding:12px}.table-scroll{overflow:visible}table{font-size:10px}th,td{padding:6px;border-color:#bbb}thead{display:table-header-group}tr{break-inside:avoid}.note{font-size:10px}#search-status{display:none}.ai-tag{position:static;display:block;background:white;color:#333;border:0}.card h2{font-size:22px}.foot a{display:none}
     }
-  </style>
-</head>
-<body>
-  <header class="top"><div class="wrap topin"><div class="brand">CRACKEN<i>.ONE</i></div><small>Gloomhaven Universe / Production Master</small></div></header>
-  <main>
-    <section class="hero"><div class="wrap"><div class="eyebrow">Terrain upgrade collection · GU-01—GU-13</div><h1>Production<br>master.</h1><p>One complete collection. Thirteen packs. Existing concept covers paired with component schedules and a material purchase worksheet.</p><div class="stats"><span class="stat"><b>13</b> packs</span><span class="stat"><b>339</b> pieces · pack totals verified</span><span class="stat" id="margin-label"></span></div></div></section>
-    <section class="wrap purchase" aria-labelledby="purchase-title"><div class="eyebrow">01 / Material planning</div><h2 id="purchase-title">Material purchase estimate</h2><p id="bom-status" class="note"></p><p>Suggested colors use one material and one color per component. All current weights are provisional conservative estimates, not measured values. Confirm final sizes, infill, supports and resin drainage before buying. The safety margin is applied once to net weight.</p><div id="material-totals" class="totals"></div><div class="table-scroll"><table><caption>Full collection by material and color · independent of search</caption><thead><tr><th scope="col">Material / color</th><th scope="col">Pieces assigned</th><th scope="col">Net weight</th><th scope="col">Purchase with margin</th></tr></thead><tbody id="purchase-rows"></tbody></table></div></section><div class="controls"><div class="wrap bar"><input class="search" id="search" aria-label="Search packs" placeholder="Search packs or components — e.g. crystal, door, snow…"><button class="jump" onclick="clearSearch()">Clear search</button></div></div>
-    <p class="wrap" id="search-status" role="status"></p><section class="wrap grid" id="catalog"></section><noscript><p class="wrap note">Enable JavaScript to display the component schedules and calculate materials.</p></noscript>
-  </main>
-  <footer><div class="wrap foot"><span><a href="index.html">Customer guide</a> · Unofficial production reference · Gloomhaven and Frosthaven are trademarks of their respective owners.</span><button class="print" onclick="print()">Print / Save PDF</button></div></footer>
-  <script src="production-data.js"></script>
-  <script src="production-master.js"></script>
-</body>
-</html>
+    .customer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:28px 0 48px}.customer-pack{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:var(--panel)}.customer-pack img{display:block;width:100%;height:auto}.customer-pack figcaption{display:flex;justify-content:space-between;gap:12px;padding:16px;font-weight:800}.customer-pack strong{color:var(--orange)}
+    @media(max-width:760px){.customer-grid{grid-template-columns:1fr}}
+    @media print{.customer-grid{display:block;padding:0}.customer-pack{break-inside:avoid;break-after:page;background:white;border:0;border-radius:0}.customer-pack:last-child{break-after:auto}.customer-pack img{max-height:230mm;object-fit:contain}.customer-pack figcaption,.customer-pack strong{color:#111}body[data-view="customer"] footer{display:none}}
+  
+</style></head><body data-view="customer"><header class="top"><div class="wrap topin"><div class="brand">CRACKEN<i>.ONE</i></div><button class="print" onclick="window.print()">Print / Save PDF</button></div></header><main class="wrap"><section class="customer-grid" aria-label="Upgrade collection">
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-01-concept.webp" alt="GU-01" loading="eager"><figcaption><span>GU-01</span><strong>28 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-02-concept.webp" alt="GU-02" loading="eager"><figcaption><span>GU-02</span><strong>32 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-03-concept.webp" alt="GU-03" loading="eager"><figcaption><span>GU-03</span><strong>26 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-04-concept.webp" alt="GU-04" loading="eager"><figcaption><span>GU-04</span><strong>28 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-05-concept.webp" alt="GU-05" loading="eager"><figcaption><span>GU-05</span><strong>23 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-06-concept.webp" alt="GU-06" loading="eager"><figcaption><span>GU-06</span><strong>41 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-07-concept.webp" alt="GU-07" loading="eager"><figcaption><span>GU-07</span><strong>29 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-08-concept.webp" alt="GU-08" loading="eager"><figcaption><span>GU-08</span><strong>20 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-09-concept.webp" alt="GU-09" loading="eager"><figcaption><span>GU-09</span><strong>24 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-10-concept.webp" alt="GU-10" loading="eager"><figcaption><span>GU-10</span><strong>38 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-11-concept.webp" alt="GU-11" loading="eager"><figcaption><span>GU-11</span><strong>28 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-12-concept.webp" alt="GU-12" loading="eager"><figcaption><span>GU-12</span><strong>14 pieces</strong></figcaption></figure>
+<figure class="customer-pack"><img src="assets/gu-concepts/gu-13-concept.webp" alt="GU-13" loading="eager"><figcaption><span>GU-13</span><strong>8 pieces</strong></figcaption></figure>
+</section></main></body></html>
